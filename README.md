@@ -8,7 +8,7 @@ It might possible to use the code here as a starting point for incremental (agil
 
 ### Building and testing
 
-Local build
+#### Local build
 
 ```sh
 > python3.10 -m venv .venv
@@ -20,7 +20,31 @@ Local build
 (.venv) > pip install -r requirements.txt
 ```
 
-Github Actions
+#### Github Actions
+
+The basic ```docker-image.yml``` workflow looks like this.
+
+```yml
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+```
+
 
 ### Deployment
 
@@ -38,3 +62,10 @@ To deploy containers best practice is to 'push' the containers to a 'registry' f
 Python
 
 Docker
+
+## Tutorials
+
+<https://azure.github.io/kube-labs/1-github-actions.html>
+
+<https://nicwortel.nl/blog/2022/05/27/continuous-deployment-to-kubernetes-with-github-actions>
+
