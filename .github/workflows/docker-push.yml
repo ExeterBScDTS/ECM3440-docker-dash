@@ -35,5 +35,5 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/ecm340-dash:${{ env.BUILD_DATE }}
- 
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/ecm3440-dash:${{ env.BUILD_DATE }}, ${{ secrets.DOCKER_HUB_USERNAME }}/ecm3440-dash:latest
+
