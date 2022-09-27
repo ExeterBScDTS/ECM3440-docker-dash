@@ -45,10 +45,9 @@ jobs:
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
 ```
 
-
 ### Deployment
 
-To deploy containers best practice is to 'push' the containers to a 'registry' from the development system (your laptop), then 'pull' to the hosting system - such as a Kubernetes cluster. Do consider appropriate tags for your releases.
+To deploy containers best practice is to 'push' the containers to a 'registry' from the build (or development) system, then 'pull' to the hosting system - such as a Kubernetes cluster. Do consider appropriate tags for your releases.
 
 <https://docs.docker.com/engine/reference/commandline/push/>
 
@@ -69,3 +68,4 @@ Docker
 
 <https://nicwortel.nl/blog/2022/05/27/continuous-deployment-to-kubernetes-with-github-actions>
 
+<https://docs.github.com/en/actions/publishing-packages/publishing-docker-images>
