@@ -18,6 +18,8 @@ ENTRYPOINT [ "python" ]
 CMD ["-u", "app.py"]
 
 # Build with
-# docker build -t ecm3440-dash:latest .
+# docker build -t msaunby/ecm3440-dash:latest .
 # Run with
 # docker run -p 8080:8080 ecm3440-dash
+# Push with
+# docker push msaunby/ecm3440-dash:latest
