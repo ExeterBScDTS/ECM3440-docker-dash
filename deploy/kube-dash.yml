@@ -1,0 +1,53 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ecm3440-dash-service
+spec:
+  selector:
+    app: ecm3440-dash
+  ports:
+  - protocol: "TCP"
+    port: 8080
+    targetPort: 8080
+  type: LoadBalancer
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ecm3440-dash
+spec:
+  selector:
+    matchLabels:
+      app: ecm3440-dash
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ecm3440-dash
+    spec:
+      containers:
+      - name: ecm3440-dash
+        image: msaunby/ecm3440-dash:latest
+        imagePullPolicy: Always
+        env:
+        - name: SERVICE_BUS_CONNECTION
+          valueFrom:
+            secretKeyRef:
+              name: ecm3440
+              key: SERVICE_BUS_CONNECTION
+              optional: false
+        - name: SERVICE_BUS_TOPIC
+          valueFrom:
+            secretKeyRef:
+              name: ecm3440
+              key: SERVICE_BUS_TOPIC
+              optional: false
+        - name: SERVICE_BUS_SUBSCRIPTION
+          valueFrom:
+            secretKeyRef:
+              name: ecm3440
+              key: SERVICE_BUS_SUBSCRIPTION
+              optional: false 
+        ports:
+        - containerPort: 8080
