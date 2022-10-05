@@ -57,6 +57,15 @@ Here's where this example is pushed to
 
 <https://hub.docker.com/repository/docker/msaunby/ecm3440-dash>
 
+The current workflow is set up to only push when a version of the code is tagged using git.
+
+e.g.
+
+```
+git tag rel-0.1 main
+
+git push origin rel-0.1
+```
 
 ## Resources
 
