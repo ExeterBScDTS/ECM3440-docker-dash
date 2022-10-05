@@ -127,5 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
 code/set_env.sh
-deploy/set_secrets.sh
+
