@@ -59,3 +59,14 @@ Discover endpoints with
 ```sh
 $ kubectl describe services ecm3440-dash-service
 ```
+
+Useful commands
+```sh
+kubectl get service -o wide
+
+kubectl scale --replicas=0 deployment ecm3440-dash
+
+kubectl delete service ecm3440-dash-service
+
+
+```
