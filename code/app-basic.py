@@ -1,6 +1,9 @@
 # Run this app with `python app.py` and
 # visit http://localhost:8080/ in your web browser.
 
+# This example does not fetch data from the IoT hub, it's just a
+# simple dash application to check that the Python environment is good.
+
 from dash import Dash, html, dcc
 import plotly.express as px
 import pandas as pd

@@ -2,7 +2,9 @@
 
 ## Kubernetes
 
-Local install.  Not required, but can be useful when getting started.
+### Local install
+
+Not required, but can be useful when getting started.
 
 <https://microk8s.io/docs/getting-started>
 
@@ -16,20 +18,19 @@ It's tempting when developing locally to hard code passwords, port numbers, path
 
 ```sh
 $ kubectl create secret generic mysecret \
-  --from-literal=username=msaunby \
+  --from-literal=username=fred \
   --from-literal=password='Pa55w0rd'
 
+# Check that secret has been created
 $ kubectl get secrets
-```
 
-```sh
+# Print out the secret, base64 encoded 
 $ kubectl get secret mysecret -o jsonpath='{.data}' 
 ```
 
-Decode with ```echo "c29pbA==" | base64 --decode```
+For more info see
 
 <https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables>
-
 
 
 ### Deploy
@@ -44,14 +45,16 @@ Check deployment status with
 
 ```sh
 $ kubectl get pods
+
+$ kubectl get services
 ```
 
 If there is an error, check log with
 
 ```sh
-$ kubectl logs ecm3440-dash-86965f57d9-zfft2
+$ kubectl logs ecm3440-dash-<ID>
 
-$ kubectl describe pod  ecm3440-dash-86965f57d9-zfft2
+$ kubectl describe pod  ecm3440-dash-<ID>
 ```
 
 Discover endpoints with
@@ -60,13 +63,12 @@ Discover endpoints with
 $ kubectl describe services ecm3440-dash-service
 ```
 
-Useful commands
+Other useful commands
+
 ```sh
-kubectl get service -o wide
 
-kubectl scale --replicas=0 deployment ecm3440-dash
+$ kubectl scale --replicas=0 deployment ecm3440-dash
 
-kubectl delete service ecm3440-dash-service
-
+$ kubectl delete service ecm3440-dash-service
 
 ```
