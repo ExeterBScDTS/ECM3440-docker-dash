@@ -11,13 +11,8 @@ import subscriber
 def prepare_app():
     app = Dash(__name__)
 
-    df = pd.DataFrame({'soil_moisture':[],'time':[]})
-
-    fig = px.bar(df, y='soil_moisture')
-
     app.layout = html.Div(children=[
-        html.H1(children='Soil moisture chart'),
-        dcc.Graph(id='soil-moisture-graph',figure=fig),
+        html.H1(children='Waiting for data...'),
         dcc.Interval(
             id='interval-component',
             interval=2*1000, # in milliseconds
