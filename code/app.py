@@ -12,7 +12,7 @@ def prepare_app():
     app = Dash(__name__)
 
     app.layout = html.Div(children=[
-        html.H1(children='Waiting for data...'),
+        html.H1(children='Workshop test!'),
         dcc.Interval(
             id='interval-component',
             interval=2*1000, # in milliseconds
